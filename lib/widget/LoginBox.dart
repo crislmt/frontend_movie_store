@@ -63,7 +63,7 @@ class Loginbox extends StatelessWidget{
 
         ),
         Align(
-          alignment: Alignment(-0.05,0),
+          alignment: Alignment(0,0),
           child: Padding(
             padding: EdgeInsets.fromLTRB(4,0,4,15),
             child: Container(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_movie_store/pages/LoginPageWidget.dart';
+import 'package:frontend_movie_store/pages/MainPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,8 +24,11 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:LoginPageWidget(),
+      home: MainPage(),
     );
   }
+
 }
+
+
 
