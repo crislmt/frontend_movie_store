@@ -11,18 +11,12 @@ class LoginPageWidget extends StatefulWidget{
 }
 
 class _LoginPageWidgetState extends State<LoginPageWidget>{
-  late TextEditingController emailTextController;
-  late TextEditingController passwordTextController;
-  late bool passwordVisible;
-  final scaffoldKey=GlobalKey<ScaffoldState>();
 
-  @override
-  void initState(){
-    super.initState();
-    emailTextController=TextEditingController();
-    passwordTextController=TextEditingController();
-    passwordVisible=false;
-  }
+  TextEditingController emailTextController=TextEditingController();
+  TextEditingController passwordTextController=TextEditingController();
+  bool passwordVisible=false;
+  Key scaffoldKey=GlobalKey<ScaffoldState>();
+
 
   @override
   Widget build(BuildContext context){
@@ -49,9 +43,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget>{
                   padding:EdgeInsets.fromLTRB(0,180,0,0),
                   child: Container(
                     width:double.infinity,
-                    height: 100, 
+                    height: 100,
                       decoration: BoxDecoration(
-                        color:Color(0xFFEEEEEE),
+                        color:Colors.white,
                         borderRadius: BorderRadius.circular(30),
                       ),
                     child: Padding(
@@ -70,7 +64,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>{
                             Loginbox(emailTextController,passwordTextController),
                           ]
                         )
-                      )                    
+                      )
                     )
                   )
                 )

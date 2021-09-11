@@ -79,14 +79,15 @@ class Loginbox extends StatelessWidget{
                   children: [
                     TextButton(
                         onPressed: null, //TODO
-                        child: Text('Sign in by email', style: TextStyle(color: Colors.black, fontFamily: "Open Sans")),
-                        style: TextButton.styleFrom(padding: EdgeInsets.all(16.0), primary: Colors.white),
+                        child: Text('Sign in', style: GoogleFonts.getFont("Open Sans", fontSize: 15, color: Colors.black, fontWeight: FontWeight.w700)),
                     )
                 ])
             )
           )
-
-
+        ),
+        TextButton(
+              onPressed: null,
+              child:Text("Create an account", style: GoogleFonts.getFont("Open Sans"))
         )
       ],
     );

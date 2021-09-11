@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_movie_store/pages/LoginPageWidget.dart';
-import 'package:frontend_movie_store/pages/MainPage.dart';
+import 'package:frontend_movie_store/pages/LoginPage.dart';
+import 'package:frontend_movie_store/pages/Layout.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.white,
+        backgroundColor: Colors.black,
       ),
       home: MainPage(),
     );
