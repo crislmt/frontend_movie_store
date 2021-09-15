@@ -25,7 +25,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>{
       body: Stack(
         children:[
         Align(
-          alignment: Alignment(0,-1),
+          alignment: Alignment(0,0),
           child: Image.network("https://preview.redd.it/54qqo354uyy11.jpg?width=960&crop=smart&auto=webp&s=b6d6a073e45d4fdae16c61efa6d04eed8aedef3a",
           width: double.infinity,
           height: 250,

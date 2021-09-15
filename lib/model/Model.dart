@@ -82,14 +82,14 @@ class Model{
     }
   }
 
-  Future<List<Movie>> searchProductByTitle(String title, int pageNumber, int pageSize, String sortedBy) async{
+  Future<List<Movie>> searchProductByTitle(String title, int pageNumber, int pageSize, String sortBy) async{
     Map<String, String> params=Map();
     params["title"]=title;
     params["pageNumber"]="$pageNumber";
     params["pageSize"]="$pageSize";
-    params["sortedBy"]=sortedBy;
+    params["sortBy"]=sortBy;
     try{
-      return List<Movie>.from(json.decode(await _restManager.makeGetRequest(Constants.ADDRESS_STORE_SERVER, Constants.REQUEST_SEARCH_MOVIE_BYNAME, params)).map((i) => Movie.fromJson(i)).toList());
+      return List<Movie>.from(json.decode(await _restManager.makeGetRequest(Constants.ADDRESS_STORE_SERVER, Constants.REQUEST_SEARCH_MOVIE_BYTITLE, params)).map((i) => Movie.fromJson(i)).toList());
     }
     catch(e){
       return null;

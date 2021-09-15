@@ -1,10 +1,10 @@
 class Constants {
   // app info
   static final String APP_VERSION = "0.0.1";
-  static final String APP_NAME = "ExamStore";
+  static final String APP_NAME = "MovieStore-API";
 
   // addresses
-  static final String ADDRESS_STORE_SERVER = "localhost:8081";
+  static final String ADDRESS_STORE_SERVER = "localhost:9090";
   static final String ADDRESS_AUTHENTICATION_SERVER = "localhost:8080";
 
   // authentication
@@ -15,7 +15,7 @@ class Constants {
   static final String REQUEST_LOGOUT = "/auth/realms/" + REALM + "/protocol/openid-connect/logout";
 
   // requests
-  static final String REQUEST_SEARCH_MOVIE_BYNAME = "/movies/search/byTitle";
+  static final String REQUEST_SEARCH_MOVIE_BYTITLE = "/movies/search/byTitle";
   static final String REQUEST_SEARCH_PRODUCTS_BYCATEGORY = "/prodotti/search/category";
   static final String REQUEST_DO_PURCHASE = "/acquisti/withToken";
   static final String REQUEST_ADD_USER = "/users";
