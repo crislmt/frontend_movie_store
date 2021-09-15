@@ -3,7 +3,7 @@ import 'package:frontend_movie_store/widget/LoginBox.dart';
 
 class LoginPageWidget extends StatefulWidget{
 
-  LoginPageWidget({Key? key}) : super(key:key);
+  LoginPageWidget({Key key}) : super(key:key);
 
   @override
   _LoginPageWidgetState createState() => _LoginPageWidgetState();

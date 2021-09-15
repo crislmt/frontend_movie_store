@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_movie_store/pages/HomePage.dart';
 import 'package:frontend_movie_store/pages/LoginPage.dart';
+import 'package:frontend_movie_store/pages/SearchPage.dart';
 import 'package:frontend_movie_store/pages/ShoppingCartPage.dart';
 
 
 class MainPage extends StatefulWidget{
 
-    MainPage({Key? key}) : super(key:key);
+    MainPage({Key key}) : super(key:key);
 
     @override
     _MainPageState createState() => _MainPageState();
@@ -16,15 +17,16 @@ class MainPage extends StatefulWidget{
 class _MainPageState extends State<MainPage> {
 
   int _currentIndex=0;
-  final List<Widget> _children=[HomePage(), LoginPageWidget(), ShoppingCart()];
+  final List<Widget> _children=[HomePage(), SearchPage(), ShoppingCartPage(),LoginPageWidget()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(title: Text("Hello"),),
+      appBar:AppBar(title:Text("Ciao"),
+      ),
       body: _children[_currentIndex],
       bottomNavigationBar: new BottomNavigationBar(
-        backgroundColor: Colors.white,
+        type: BottomNavigationBarType.fixed,
         elevation: 0,
         onTap: onTabTapped,
         currentIndex: _currentIndex,
@@ -34,13 +36,17 @@ class _MainPageState extends State<MainPage> {
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.account_circle_outlined),
-            label: "User",
+            icon: new Icon(Icons.search_off_outlined),
+            label:"Find"
           ),
           BottomNavigationBarItem(
             icon: new Icon(Icons.shopping_cart_outlined),
             label: "Cart",
-          )
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.account_circle_outlined),
+            label: "User",
+          ),
         ]
       ),
     );
