@@ -88,15 +88,21 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget yesResults() {
-    return Expanded(
-      child: Text(
-        "There is another",
-        style: TextStyle(
-          fontSize: 50,
-          color: Theme.of(context).primaryColor,
-
-        ),
-      ),
+    return Scaffold(
+        body:GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
+              mainAxisExtent: 200
+          ),
+          itemCount: _movies.length,
+          itemBuilder: (context, int index ){
+            return MovieGridItem(movie: _movies[index]);
+          },
+          padding: EdgeInsets.all(10),
+          shrinkWrap: true,
+        )
     );
   }
 

@@ -15,4 +15,8 @@ class Genre{
     "id": id,
     "name": name,
   };
+
+  String toString(){
+    return ""+name;
+  }
 }

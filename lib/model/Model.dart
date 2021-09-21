@@ -87,7 +87,7 @@ class Model{
     params["title"]=title;
     params["pageNumber"]="$pageNumber";
     params["pageSize"]="$pageSize";
-    params["sortBy"]=sortBy;
+    params["sortBy"]="sortBy";
     try{
       return List<Movie>.from(json.decode(await _restManager.makeGetRequest(Constants.ADDRESS_STORE_SERVER, Constants.REQUEST_SEARCH_MOVIE_BYTITLE, params)).map((i) => Movie.fromJson(i)).toList());
     }
