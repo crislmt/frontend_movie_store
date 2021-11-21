@@ -68,7 +68,7 @@ class MovieGridItem extends StatelessWidget{
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       Text(
-                        '\$'+'22.0',
+                        movie.price.toString(),
                         style: TextStyle(
                           fontSize: 13,
                           color: Theme

@@ -19,7 +19,6 @@ class Model{
       Map<String, String> params = Map();
       params["grant_type"] = "password";
       params["client_id"] = Constants.CLIENT_ID;
-      params["client_secret"] = Constants.CLIENT_SECRET;
       params["username"] = email;
       params["password"] = password;
       String result = await _restManager.makePostRequest(Constants.ADDRESS_AUTHENTICATION_SERVER, Constants.REQUEST_LOGIN, params, type: TypeHeader.urlencoded);
@@ -87,12 +86,12 @@ class Model{
     params["title"]=title;
     params["pageNumber"]="$pageNumber";
     params["pageSize"]="$pageSize";
-    params["sortBy"]="sortBy";
+    params["sortBy"]=sortBy;
     try{
       return List<Movie>.from(json.decode(await _restManager.makeGetRequest(Constants.ADDRESS_STORE_SERVER, Constants.REQUEST_SEARCH_MOVIE_BYTITLE, params)).map((i) => Movie.fromJson(i)).toList());
     }
     catch(e){
-      return null;
+      print(e);
     }
   }
 

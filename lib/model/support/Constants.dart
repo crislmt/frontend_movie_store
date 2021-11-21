@@ -8,15 +8,15 @@ class Constants {
   static final String ADDRESS_AUTHENTICATION_SERVER = "localhost:8080";
 
   // authentication
-  static final String REALM = "ExamReal";
-  static final String CLIENT_ID = "ExamFlutterApp";
+  static final String REALM = "MovieStore";
+  static final String CLIENT_ID = "flutter";
   static final String CLIENT_SECRET = "";
   static final String REQUEST_LOGIN = "/auth/realms/" + REALM + "/protocol/openid-connect/token";
   static final String REQUEST_LOGOUT = "/auth/realms/" + REALM + "/protocol/openid-connect/logout";
 
   // requests
   static final String REQUEST_SEARCH_MOVIE_BYTITLE = "/movies/search/byTitle";
-  static final String REQUEST_DO_PURCHASE = "/acquisti/withToken";
+  static final String REQUEST_DO_PURCHASE = "/purchases/addPurchase";
   static final String REQUEST_ADD_USER = "/users";
 
   // states

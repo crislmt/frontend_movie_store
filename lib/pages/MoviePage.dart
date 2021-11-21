@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend_movie_store/model/objects/Movie.dart';
+import 'package:frontend_movie_store/model/objects/MoviePurchase.dart';
+import 'package:frontend_movie_store/pages/ShoppingCartPage.dart';
 import 'package:frontend_movie_store/widget/AmountSelector.dart';
 
 class MoviePage extends StatelessWidget {
@@ -61,24 +63,7 @@ class MoviePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: 300,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.yellow,
-                        borderRadius: BorderRadius.circular(25),
-                        gradient: null,
-                        backgroundBlendMode: null),
-                    child: TextButton(
-                      onPressed: null, //TODO
-                      child: Text(
-                        'Add to Cart',
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  AmountSelector(quantity: movie.quantity),
+                  AmountSelector(movie: movie, quantity: movie.quantity),
                 ],
               )
             ),

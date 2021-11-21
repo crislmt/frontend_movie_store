@@ -17,7 +17,7 @@ class MainPage extends StatefulWidget{
 class _MainPageState extends State<MainPage> {
 
   int _currentIndex=0;
-  final List<Widget> _children=[HomePage(), SearchPage(), ShoppingCartPage(),LoginPageWidget()];
+  final List<Widget> _children=[SearchPage(), ShoppingCartPage(),LoginPageWidget()];
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,10 @@ class _MainPageState extends State<MainPage> {
             icon: new Icon(Icons.home_outlined),
             label: "Home",
           ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.search_off_outlined),
+          /*BottomNavigationBarItem(
+            icon: new Icon(Icons.search_outlined),
             label:"Find"
-          ),
+          ),*/
           BottomNavigationBarItem(
             icon: new Icon(Icons.shopping_cart_outlined),
             label: "Cart",

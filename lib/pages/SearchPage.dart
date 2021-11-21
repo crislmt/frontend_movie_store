@@ -5,7 +5,9 @@ import 'package:frontend_movie_store/widget/InputField.dart';
 import 'package:frontend_movie_store/widget/MovieGridItem.dart';
 
 class SearchPage extends StatefulWidget {
+
   SearchPage({Key key}) : super(key: key);
+
 
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -33,19 +35,16 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget top() {
-    return Column(
-      children: [
-        Padding(
-            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-            child: Flexible(
-                child: InputField(
-              labelText: "Search",
-              controller: _searchFieldController,
-              onSubmit: (value){
-                _search();
-              },
-            ))),
-      ],
+    return Padding(
+      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+      child:Flexible(
+          child: InputField(
+            labelText: "Search",
+            controller: _searchFieldController,
+            onSubmit: (value){
+              _search();
+            },
+          )),
     );
   }
 
@@ -64,7 +63,7 @@ class _SearchPageState extends State<SearchPage> {
       _searching=true;
       _movies=null;
     });
-    Model.sharedInstance.searchProductByTitle(_searchFieldController.text, _pageNumber, _pageSize, "title").then((result){
+    Model.sharedInstance.searchProductByTitle(_searchFieldController.text, _pageNumber, _pageSize, 'title').then((result){
       setState((){
         _searching=false;
         if(result==null)
@@ -81,15 +80,14 @@ class _SearchPageState extends State<SearchPage> {
         style: TextStyle(
           fontSize: 50,
           color: Theme.of(context).primaryColor,
-
         ),
       ),
     );
   }
 
   Widget yesResults() {
-    return Scaffold(
-        body:GridView.builder(
+   return Container(
+        child:GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 5,

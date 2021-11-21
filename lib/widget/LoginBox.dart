@@ -5,6 +5,7 @@ class Loginbox extends StatelessWidget{
 
   final TextEditingController emailTextController;
   final TextEditingController passwordTextController;
+  final Function onPressed;
 
   @override
   Widget build(BuildContext context){
@@ -78,7 +79,7 @@ class Loginbox extends StatelessWidget{
                 child: Column(
                   children: [
                     TextButton(
-                        onPressed: null, //TODO
+                        onPressed: onPressed,
                         child: Text('Sign in', style: GoogleFonts.getFont("Open Sans", fontSize: 15, color: Colors.black, fontWeight: FontWeight.w700)),
                     )
                 ])
@@ -93,6 +94,6 @@ class Loginbox extends StatelessWidget{
     );
   }
 
-  Loginbox(this.emailTextController, this.passwordTextController);
+  Loginbox(this.emailTextController, this.passwordTextController, this.onPressed);
 
 }

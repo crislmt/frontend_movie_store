@@ -13,26 +13,24 @@ class Movie{
   List<Genre> genres;
   List<Actor> actors;
 
-  Movie({this.id, this.title, this.director, this.imageUrl, this.releaseYear, this.price, this.quantity, this.description, this.genres, this.actors});
+  Movie({this.id, this.title, this.director, this.imageUrl, this.releaseYear, this.price, this.quantity, this.description});
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
         id: json['id'],
         title: json['title'],
-        director: json['directory'],
+        director: json['director'],
         imageUrl: json['imageUrl'],
         releaseYear: json['releaseYear'],
         price: json['price'],
         quantity: json['quantity'],
         description: json['description'],
-        genres: json['genres'],
-        actors: json['actors'],
     );
   }
 
   Map<String, dynamic> toJson() => {
     'id': id,
-    "title": title,
+    'title': title,
     'price' : price,
     'quantity': quantity
   };

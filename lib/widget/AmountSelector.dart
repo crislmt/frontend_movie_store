@@ -1,32 +1,56 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend_movie_store/model/objects/Movie.dart';
+import 'package:frontend_movie_store/model/objects/MoviePurchase.dart';
+import 'package:frontend_movie_store/pages/ShoppingCartPage.dart';
 
 class AmountSelector extends StatefulWidget{
 
   final int quantity;
+  final Movie movie;
 
   const AmountSelector({
     Key key,
     @required this.quantity,
+    @required this.movie,
   }) : super(key: key);
 
-  _AmountSelectorState createState() => _AmountSelectorState(quantity: quantity);
+  _AmountSelectorState createState() => _AmountSelectorState(movie: movie, quantity: quantity);
 }
 
 class _AmountSelectorState extends State<AmountSelector>{
 
   final int quantity;
-  int currentAmount;
+  final Movie movie;
+  int currentAmount=1;
 
   _AmountSelectorState({
     Key key,
     @required this.quantity,
+    @required this.movie,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children:[
+        Container(
+          width: 300,
+          height: 50,
+          decoration: BoxDecoration(
+              color: Colors.yellow,
+              borderRadius: BorderRadius.circular(25),
+              gradient: null,
+              backgroundBlendMode: null),
+          child: TextButton(
+            onPressed:(){addToCart();}, //TODO
+            child: Text(
+              'Add to Cart',
+              style: TextStyle(
+                  color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
         buildOutlineButton(
           icon: Icons.remove,
           press:(){
@@ -68,6 +92,20 @@ class _AmountSelectorState extends State<AmountSelector>{
         child: Icon(icon),
       ),
     );
+  }
+
+  void addToCart(){
+    bool flag=false;
+    for(int i=0; i<ShoppingCartPageState.movies.length; i++){
+      if(ShoppingCartPageState.movies[i].movie.id==movie.id){
+        ShoppingCartPageState.movies[i].movie.quantity--;
+        flag=true;
+      }
+    }
+    if(!flag && movie.quantity>0){
+      Movie temp=new Movie(id: movie.id, quantity: 1, imageUrl: movie.imageUrl, title: movie.title, description: movie.description, director: movie.director, price: movie.price, releaseYear: movie.releaseYear);
+      ShoppingCartPageState.movies.add(MoviePurchase(temp, currentAmount));
+    }
   }
 
 }
