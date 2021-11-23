@@ -103,15 +103,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             ),
                             child: Padding(
                                 padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
-                                child: SingleChildScrollView(
-                                    child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
+                                child:Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
                                       Padding(
                                           padding:
-                                              EdgeInsets.fromLTRB(0, 0, 0, 12),
+                                          EdgeInsets.fromLTRB(0, 0, 0, 12),
                                           child: Image.network(
                                               "https://thumbs.dreamstime.com/b/movie-film-company-logo-design-vector-template-movie-film-company-logo-design-inspiration-vector-template-167661473.jpg",
                                               width: 120,
@@ -119,7 +117,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       Loginbox(emailTextController,
                                           passwordTextController, _login),
                                     ]
-                                    )
                                 )
                             )
                         )

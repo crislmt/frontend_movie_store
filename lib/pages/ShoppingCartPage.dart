@@ -53,7 +53,7 @@ class ShoppingCartPageState extends State<ShoppingCartPage>{
                       alignment: Alignment.topLeft,
                       child: Row(
                         children: [
-                          Text("Totale provvisorio: ",style: TextStyle(fontSize: 20),),
+                          Text("Total : ",style: TextStyle(fontSize: 20),),
                           Text("€"+getTotalPrice().toString(),style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
                         ],
                       )
@@ -67,16 +67,16 @@ class ShoppingCartPageState extends State<ShoppingCartPage>{
                       width: double.infinity,
                       height: 50,
                       decoration: BoxDecoration(
-                          color: Colors.yellow,
+                          color: Theme.of(context).buttonColor,
                           borderRadius: BorderRadius.circular(10),
                           gradient: null,
                           backgroundBlendMode: null),
                       child: TextButton(
                         onPressed:(){onPressed:doPurchase();}, //TODO
                         child: Text(
-                          'Procedi all\'ordine',
+                          'Place your order',
                           style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
+                              color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -92,7 +92,8 @@ class ShoppingCartPageState extends State<ShoppingCartPage>{
     if(movies==null || movies.length==0){
       return Container(
         child:  Center(
-          child: Text("Nessun prodotto nel carrello"),
+          child: Text("The cart is empty"),
+          heightFactor: 10,
         ),
       );
     }
