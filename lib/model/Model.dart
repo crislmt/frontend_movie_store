@@ -124,7 +124,4 @@ class Model{
       return "Something went wrong";
     }
   }
-
-
-
 }
