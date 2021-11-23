@@ -17,7 +17,7 @@ class Constants {
   // requests
   static final String REQUEST_SEARCH_MOVIE_BYTITLE = "/movies/search/byTitle";
   static final String REQUEST_DO_PURCHASE = "/purchases/addPurchase";
-  static final String REQUEST_ADD_USER = "/users";
+  static final String REQUEST_GET_USER = "/users/info";
 
   // states
   static final String STATE_CLUB = "club";

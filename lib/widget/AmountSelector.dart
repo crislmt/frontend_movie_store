@@ -20,8 +20,8 @@ class AmountSelector extends StatefulWidget{
 
 class _AmountSelectorState extends State<AmountSelector>{
 
-  final int quantity;
-  final Movie movie;
+  int quantity;
+  Movie movie;
   int currentAmount=1;
 
   _AmountSelectorState({
@@ -43,7 +43,7 @@ class _AmountSelectorState extends State<AmountSelector>{
               gradient: null,
               backgroundBlendMode: null),
           child: TextButton(
-            onPressed:(){addToCart();}, //TODO
+            onPressed:(){addToCart(currentAmount);}, //TODO
             child: Text(
               'Add to Cart',
               style: TextStyle(
@@ -51,6 +51,7 @@ class _AmountSelectorState extends State<AmountSelector>{
             ),
           ),
         ),
+        SizedBox(width: 15,),
         buildOutlineButton(
           icon: Icons.remove,
           press:(){
@@ -94,11 +95,12 @@ class _AmountSelectorState extends State<AmountSelector>{
     );
   }
 
-  void addToCart(){
+  void addToCart(int currentAmount){
     bool flag=false;
     for(int i=0; i<ShoppingCartPageState.movies.length; i++){
+      print(ShoppingCartPageState.movies[i].movie);
       if(ShoppingCartPageState.movies[i].movie.id==movie.id){
-        ShoppingCartPageState.movies[i].movie.quantity--;
+        ShoppingCartPageState.movies[i].quantity+=currentAmount;
         flag=true;
       }
     }

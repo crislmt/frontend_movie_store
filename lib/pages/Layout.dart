@@ -22,7 +22,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(title:Text("Ciao"),
+      appBar:AppBar(title:Text("MovieStore"),
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: new BottomNavigationBar(

@@ -63,28 +63,28 @@ class Loginbox extends StatelessWidget{
             )
 
         ),
-        Align(
-          alignment: Alignment(0,0),
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(4,0,4,15),
-            child: Container(
-                  width:300,
-                  height: 50,
-                  decoration:BoxDecoration(
-                    color:Colors.yellow,
-                    borderRadius: BorderRadius.circular(25),
-                    gradient: null,
-                    backgroundBlendMode: null
-                  ),
-                child: Column(
-                  children: [
-                    TextButton(
-                        onPressed: onPressed,
-                        child: Text('Sign in', style: GoogleFonts.getFont("Open Sans", fontSize: 15, color: Colors.black, fontWeight: FontWeight.w700)),
-                    )
-                ])
-            )
-          )
+        Padding(
+          padding: EdgeInsets.all(10),
+          child: Align(
+            alignment: Alignment.center,
+            child:Container(
+              width: 300,
+              height: 50,
+              decoration: BoxDecoration(
+                  color: Colors.yellow,
+                  borderRadius: BorderRadius.circular(25),
+                  gradient: null,
+                  backgroundBlendMode: null),
+              child: TextButton(
+                onPressed:onPressed,
+                child: Text(
+                  'Sign in',
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
         ),
         TextButton(
               onPressed: null,

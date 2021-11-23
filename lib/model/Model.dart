@@ -8,18 +8,20 @@ import 'package:frontend_movie_store/model/objects/MoviePurchase.dart';
 import 'package:frontend_movie_store/model/support/Constants.dart';
 import 'package:frontend_movie_store/model/support/LogInResult.dart';
 
+import 'objects/User.dart';
+
 class Model{
   static Model sharedInstance=Model();
 
   RestManager _restManager=RestManager();
   AuthenticationData _authenticationData;
 
-  Future<LogInResult> logIn(String email, String password) async {
+  Future<LogInResult> logIn(String username, String password) async {
     try{
       Map<String, String> params = Map();
       params["grant_type"] = "password";
       params["client_id"] = Constants.CLIENT_ID;
-      params["username"] = email;
+      params["username"] = username;
       params["password"] = password;
       String result = await _restManager.makePostRequest(Constants.ADDRESS_AUTHENTICATION_SERVER, Constants.REQUEST_LOGIN, params, type: TypeHeader.urlencoded);
       _authenticationData = AuthenticationData.fromJson(jsonDecode(result));
@@ -81,6 +83,20 @@ class Model{
     }
   }
 
+  Future<User> retrieveUserInfo(String username) async {
+    Map<String,String> params=Map();
+    params["username"]=username;
+    try{
+      String result=await _restManager.makeGetRequest(Constants.ADDRESS_STORE_SERVER,Constants.REQUEST_GET_USER, params);
+      print(result);
+      return User.fromJson(json.decode(result));
+    }
+    catch(e){
+      print("Errore qui");
+      return null;
+    }
+  }
+
   Future<List<Movie>> searchProductByTitle(String title, int pageNumber, int pageSize, String sortBy) async{
     Map<String, String> params=Map();
     params["title"]=title;
@@ -100,12 +116,12 @@ class Model{
       Map<String, String> params = Map();
       String result=await _restManager.makePostRequest(Constants.ADDRESS_STORE_SERVER, Constants.REQUEST_DO_PURCHASE, order);
       print(result);
-      if(result.contains("Quantity issue")) return "The requested quantity is not available";
-      else if(result.contains("Authentication issue")) return "You must be logged in to complete a purchase";
-      else return "Ok";
+      if(result.contains("Ok")) return "Ok";
+      else if(result.contains("Quantity issue")) return "The requested quantity is not available";
+      else return "You must be logged in to complete a purchase";
     }
     catch (e) {
-      return "";
+      return "Something went wrong";
     }
   }
 

@@ -34,74 +34,88 @@ class ShoppingCartPageState extends State<ShoppingCartPage>{
   }
 
   Widget top(){
-    return SizedBox(
-      width: double.infinity,
-      height: 150,
-      child: Container(
-        child:Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(15),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Row(
-                  children: [
-                    Text("Totale provvisorio: ",style: TextStyle(fontSize: 20),),
-                    Text("€"+getTotalPrice().toString(),style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
-                  ],
-                )
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child:Container(
-                  width: double.infinity,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: null,
-                      backgroundBlendMode: null),
-                  child: TextButton(
-                    onPressed:(){onPressed:doPurchase();}, //TODO
-                    child: Text(
-                      'Procedi all\'ordine',
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    ),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          color: Colors.black12,
+          width: 1,
+        ),
+      ),
+      child: SizedBox(
+          width: double.infinity,
+          height: 150,
+          child: Container(
+            child:Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Row(
+                        children: [
+                          Text("Totale provvisorio: ",style: TextStyle(fontSize: 20),),
+                          Text("€"+getTotalPrice().toString(),style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+                        ],
+                      )
                   ),
                 ),
-              ),
-            )
-          ],
-        ),
-      )
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child:Container(
+                      width: double.infinity,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: Colors.yellow,
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: null,
+                          backgroundBlendMode: null),
+                      child: TextButton(
+                        onPressed:(){onPressed:doPurchase();}, //TODO
+                        child: Text(
+                          'Procedi all\'ordine',
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )
+      ),
     );
   }
   Widget bottom(){
     if(movies==null || movies.length==0){
       return Container(
-        color: Colors.indigo,
         child:  Center(
           child: Text("Nessun prodotto nel carrello"),
         ),
       );
     }
-    else{
-      return Container(
-        child: ListView.builder(
-            itemCount: movies.length,
-            itemBuilder:(context,index){
-              return MovieCartItem(movie: movies[index].movie);
-            }
-        ),
-      );
-    }
+    return productInCart();
+  }
+
+  Widget productInCart(){
+    return Container(
+      child: ListView.builder(
+          itemCount: movies.length,
+          itemBuilder:(context,index){
+            return MovieCartItem(movie: movies[index]);
+          }
+      ),
+    );
   }
 
   void doPurchase(){
+    if(movies.length==0){
+      _showDialog("The cart is empty");
+      return;
+    }
     Model.sharedInstance.doPurchase(movies).then((flag){
       setState((){
         if(flag.contains("Ok")){
@@ -118,15 +132,26 @@ class ShoppingCartPageState extends State<ShoppingCartPage>{
     });
   }
 
+  void remove(MoviePurchase moviePurchase) {
+    for (int i = 0; i < ShoppingCartPageState.movies.length; i++) {
+      if (ShoppingCartPageState.movies[i].movie.id == moviePurchase.movie.id) {
+        if (ShoppingCartPageState.movies[i].quantity > 1) {
+          ShoppingCartPageState.movies[i].quantity--;
+        }
+        else {
+          ShoppingCartPageState.movies.remove(movies[i]);
+        }
+      }
+    }
+  }
   void _showDialog(String message){
     showDialog(
         context: context,
         builder:(BuildContext context){
           return AlertDialog(
-            title: new Text("Attenzione!!"),
+            title: new Text("Info"),
             content: new Text(message),
-            backgroundColor: Theme.of(context).primaryColor,
-
+            backgroundColor: Colors.white,
           );
         }
     );

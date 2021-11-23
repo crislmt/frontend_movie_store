@@ -16,6 +16,15 @@ class MoviePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Padding(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              AmountSelector(movie: movie, quantity: movie.quantity),
+            ],
+          )
+      ),
         appBar: AppBar(
           title: Text(
             movie.title,
@@ -36,15 +45,10 @@ class MoviePage extends StatelessWidget {
                 child: Stack(children: [
               Image.network(
                 movie.imageUrl,
+                width: 100,
+                height: 200,
               ),
             ])),
-            Padding(
-              padding: EdgeInsets.fromLTRB(35, 10, 10, 10),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Text("Price: \$" + movie.price.toString()),
-              ),
-            ),
             Container(
               child: ExpansionTile(
                 title: Text("Description"),
@@ -59,13 +63,18 @@ class MoviePage extends StatelessWidget {
               padding: EdgeInsets.all(16),
             ),
             Padding(
-              padding: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  AmountSelector(movie: movie, quantity: movie.quantity),
-                ],
-              )
+              padding: EdgeInsets.fromLTRB(35, 10, 10, 10),
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Text("Price: €" + movie.price.toString()),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(35, 10, 10, 10),
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Text("Available quantity: " + movie.quantity.toString()),
+              ),
             ),
           ],
         )));
