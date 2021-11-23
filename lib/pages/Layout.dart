@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_movie_store/pages/HomePage.dart';
 import 'package:frontend_movie_store/pages/LoginPage.dart';
 import 'package:frontend_movie_store/pages/SearchPage.dart';
 import 'package:frontend_movie_store/pages/ShoppingCartPage.dart';

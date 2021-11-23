@@ -101,14 +101,14 @@ class ShoppingCartPageState extends State<ShoppingCartPage>{
   }
 
   Widget productInCart(){
-    return Container(
+    return Flexible(child:  Container(
       child: ListView.builder(
           itemCount: movies.length,
           itemBuilder:(context,index){
-            return MovieCartItem(movie: movies[index]);
+            return MovieCartItem( movie: movies[index]);
           }
       ),
-    );
+    ));
   }
 
   void doPurchase(){

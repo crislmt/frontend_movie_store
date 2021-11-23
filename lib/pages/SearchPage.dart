@@ -35,16 +35,15 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget top() {
-    return Padding(
+    return Flexible(child: Padding(
       padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-      child:Flexible(
-          child: InputField(
-            labelText: "Search",
-            controller: _searchFieldController,
-            onSubmit: (value){
-              _search();
-            },
-          )),
+      child:InputField(
+        labelText: "Search",
+        controller: _searchFieldController,
+        onSubmit: (value){
+        _search();
+        },
+      ))
     );
   }
 

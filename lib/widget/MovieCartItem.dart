@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_movie_store/model/objects/Movie.dart';
 import 'package:frontend_movie_store/model/objects/MoviePurchase.dart';
+import 'package:frontend_movie_store/pages/ShoppingCartPage.dart';
 import 'package:frontend_movie_store/widget/AmountSelector.dart';
 
 class MovieCartItem extends StatelessWidget {
@@ -62,7 +63,7 @@ class MovieCartItem extends StatelessWidget {
                   Text("Quantity: " + movie.quantity.toString()),
                   SizedBox(height: 10),
                   TextButton(
-                     onPressed: null,
+                     onPressed: remove,
                       child: Text(
                         "Remove",
                         style: TextStyle(color: Colors.red),
@@ -73,5 +74,14 @@ class MovieCartItem extends StatelessWidget {
           ),
         )
     );
+  }
+
+  void remove(){
+    for(int i=0; i<ShoppingCartPageState.movies.length; i++){
+      if(ShoppingCartPageState.movies[i].movie.id==movie.movie.id){
+        if(ShoppingCartPageState.movies[i].quantity>1) ShoppingCartPageState.movies[i].quantity--;
+        else ShoppingCartPageState.movies.remove(this.movie);
+      }
+    }
   }
 }
